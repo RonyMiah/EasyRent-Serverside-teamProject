@@ -15,7 +15,7 @@ mongoose.connect(`mongodb+srv://${process.env.USER_ID}:${process.env.USER_PASS}@
 async function run() {
     try {
         // await client.connect();
-        console.log("Hello Database");
+        console.log("Hello Database  ");
     }
 
     finally {

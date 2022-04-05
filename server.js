@@ -5,15 +5,16 @@ const cors = require('cors');
 const dotenv = require('dotenv').config();
 const ConnectDB = require('./config/ConnectDB')
 
-
+//middleware
 app.use(cors());
 app.use(express.json());
 
+const userRouter = require('./router/userRouter')
 
 
-app.get('/', (req, res) => {
-  res.send('Server is running');
-})
+
+app.use('/api/user/userTest', userRouter);
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
