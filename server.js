@@ -13,7 +13,7 @@ const userRouter = require('./router/userRouter')
 
 
 
-app.use('/api/user/userTest', userRouter);
+app.use('/api/users', userRouter);
 
 
 app.listen(port, () => {
