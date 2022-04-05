@@ -9,12 +9,17 @@ const ConnectDB = require('./config/ConnectDB')
 app.use(cors());
 app.use(express.json());
 
-const userRouter = require('./router/userRouter')
+// routes 
+const authRouter = require('./router/authRoute')
 
 
 
-app.use('/api/users', userRouter);
+// use routes 
+app.use('/api/auth', authRouter);
 
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)

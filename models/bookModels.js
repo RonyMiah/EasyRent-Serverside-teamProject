@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 
-const serviceSchema = new mongoose.Schema({
+const bookSchema = new mongoose.Schema({
     title: {
         type: String,
         require: true,
         unique: true
-    },
-    description: {
-        type: String,
-        require: true,
     },
     img: {
         type: String,
@@ -18,10 +14,14 @@ const serviceSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    pickPoint: {
-        type: String,
+    address: {
+        type: Object,
         require: true
+    },
+    status: {
+        type: String,
+        default: "Pending"
     }
 }, { timeStamps: true });
 
-module.exports = mongoose.model("Services", serviceSchema);
+module.exports = mongoose.model("Book", bookSchema);
