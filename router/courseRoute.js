@@ -10,19 +10,20 @@ router.post("/courseAdd", async (req, res) => {
         youtube_video_link: req.body.youtube_video_link
     })
 
-    try { 
+    try {  
         const saveCourse = await course.save();
         res.status(201).json(saveCourse);
-    } catch (error) { 
+    } catch (error) {  
         res.status(500).json(error);
     }
 })
 
 
+
 router.get('/allCourse', async (req, res) => {
     try {
         const allCourse = await Course.find();
-        res.status(200).json(allCourse);
+        res.status(200).json(allCourse); 
     } catch (error) {
         res.status(500).json(error);
     }
@@ -31,4 +32,6 @@ router.get('/allCourse', async (req, res) => {
 
 
 
+
 module.exports = router;
+
