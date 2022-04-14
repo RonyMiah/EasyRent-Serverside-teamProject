@@ -20,7 +20,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/course', courseRoute);
 
 app.get('/', (req, res) => {
-  res.send('hello world')
+  res.send('hello database');
 })
 
 app.listen(port, () => {
