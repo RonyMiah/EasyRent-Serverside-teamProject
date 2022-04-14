@@ -11,11 +11,16 @@ app.use(express.json());
 
 // routes 
 const authRouter = require('./router/authRoute')
-
+const courseRoute = require('./router/courseRoute')
+const carRoute = require('./router/carRoute')
 
 
 // use routes 
 app.use('/api/auth', authRouter);
+app.use('/api/course', courseRoute);
+app.use('/api/find', carRoute)
+
+
 
 app.get('/', (req, res) => {
   res.send('hello world')
