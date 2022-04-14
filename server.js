@@ -11,11 +11,13 @@ app.use(express.json());
 
 // routes 
 const authRouter = require('./router/authRoute')
+const courseRoute = require('./router/courseRoute')
 
 
 
 // use routes 
 app.use('/api/auth', authRouter);
+app.use('/api/course', courseRoute);
 
 app.get('/', (req, res) => {
   res.send('hello world')
