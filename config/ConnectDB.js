@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  // .connect(`${process.env.RENT_URL}`)
-  .connect(`mongodb+srv://easy-rent:easy-rent@cluster0.8ezqf.mongodb.net/easyRentShop?retryWrites=true&w=majority`)
+  .connect(`${process.env.RENT_URL}`)
   .then(() => {
     console.log("DB Connected");
   })
