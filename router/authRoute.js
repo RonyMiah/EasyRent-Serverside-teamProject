@@ -9,7 +9,7 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
       req.body.password,
-      rentcarpro
+      process.env.PASS_SEC
     ).toString(),
   });
 
@@ -34,7 +34,7 @@ router.post("/login", async (req, res) => {
     !user && res.status(401).json("User Not Found !");
     const hashPassword = CryptoJS.AES.decrypt(
       user.password,
-      rentcarpro
+      process.env.PASS_SEC
     ).toString(CryptoJS.enc.Utf8);
     hashPassword !== req.body.password &&
       res.status(401).json("Wrong password");
@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
         id: user._id,
         isAdmin: user.isAdmin,
       },
-      rentcarpro,
+      process.env.JWT_SEC,
       { expiresIn: "7d" }
     );
 

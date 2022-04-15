@@ -6,7 +6,7 @@ const verifyToken = async (req, res, next) => {
   const token = tokenHeader.split(" ")[1];
 
   if (tokenHeader) {
-    jwt.verify(token, rentcarpro, (err, user) => {
+    jwt.verify(token, process.env.JWT_SEC, (err, user) => {
       if (err) {
         return res.status(403).json("Token is not valid");
       }
