@@ -1,27 +1,30 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const bookSchema = new mongoose.Schema({
+const bookSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        require: true,
-        unique: true
+      type: String,
+      require: true,
+      unique: true,
     },
     img: {
-        type: String,
-        require: true,
+      type: String,
+      require: true,
     },
     price: {
-        type: Number,
-        require: true
+      type: Number,
+      require: true,
     },
     address: {
-        type: Object,
-        require: true
+      type: Object,
+      require: true,
     },
     status: {
-        type: String,
-        default: "Pending"
-    }
-}, { timeStamps: true });
+      type: String,
+      default: "Pending",
+    },
+  },
+  { timeStamps: true }
+);
 
 module.exports = mongoose.model("Book", bookSchema);
