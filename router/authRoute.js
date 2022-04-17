@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
 
 // login
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
     try {
         const user = await User.findOne({
             userName: req.body.userName
@@ -35,14 +35,8 @@ router.post('/login', async (req, res) => {
         const hashPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC).toString(CryptoJS.enc.Utf8);
         hashPassword !== req.body.password && res.status(401).json("Wrong password");
 
-        const token = jwt.sign({
-            id: user._id,
-            isAdmin: user.isAdmin
-        }, process.env.JWT_SEC, { expiresIn: '7d' });
-
-
-        const { password, ...others } = user._doc;
-        res.status(200).json({ ...others, token });
+        res.status(200).json(user);
+        next();
     }
     catch (error) {
         res.status(500).json(error);
