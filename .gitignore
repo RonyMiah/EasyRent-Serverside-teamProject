@@ -1,2 +1,9 @@
 node_modules
 .env 
+
+
+Enter the 'git remote show' command in the terminal to check that 'heroku' is available with origin as well as check the branch where you push and which remote origin you have used. and also check what happened when you build in localhost.
+It can be solved if you verify this to find out the actual reason.
+Either you can use the railway hosting platform. They provide some awesome ways to deploy many types of applications. It can be free to use and hassle-free. So try now.
+
+
