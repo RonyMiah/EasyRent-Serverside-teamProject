@@ -1,5 +1,5 @@
 {
-  "name": "hospital_endgame2_server_side",
+  "name": "endgame-project-server",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {

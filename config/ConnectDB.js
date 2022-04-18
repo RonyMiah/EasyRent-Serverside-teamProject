@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 mongoose
   .connect(`${process.env.RENT_URL}`)
   .then(() => {
