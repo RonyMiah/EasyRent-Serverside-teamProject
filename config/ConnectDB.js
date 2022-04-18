@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 mongoose
   .connect(`mongodb+srv://easy-rent:easy-rent@cluster0.8ezqf.mongodb.net/easyRentShop?retryWrites=true&w=majority`)
   .then(() => {
