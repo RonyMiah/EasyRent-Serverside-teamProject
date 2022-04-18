@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 mongoose.connect(
-    process.env.RENT_URL
+    `mongodb+srv://${process.env.USER_ID}:${process.env.USER_PASS}@cluster0.8ezqf.mongodb.net/easyRentShop?retryWrites=true&w=majority`
 )
     .then(() => {
         console.log("DB Connected");
