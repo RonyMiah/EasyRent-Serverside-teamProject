@@ -16,13 +16,10 @@ const courseRoute = require('./router/courseRoute');
 const carRoute = require('./router/carRoute');
 const searchingdRoute = require('./router/searchedCarRoute');
 const findcars = require('./router/searchedCarRoute');
-<<<<<<< HEAD
 const singleCar = require('./router/singleCarRoute');
 const userDetail = require('./router/userDetailsRoute')
-=======
 const findBasisBrandRoute = require('./router/findBasisBrandRoute');
 const findDataBrandRoute = require('./router/findDataBrandRoute');
->>>>>>> development
 
 // use routes
 app.use("/api/auth", authRouter);
