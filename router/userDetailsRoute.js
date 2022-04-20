@@ -6,7 +6,7 @@ router.post('/userdetails', async (req, res) => {
     const userDetail = new userDetails({
         name: req.body.name,
         number: req.body.number,
-        cardetails: req.body.singleCar
+        cardetails: req.body.carInfo
     })
 
     try {
