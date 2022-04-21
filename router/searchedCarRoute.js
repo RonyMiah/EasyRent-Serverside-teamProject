@@ -5,6 +5,10 @@ const router = require('express').Router();
 router.post('/searchedcar', async (req, res) => {
     const searchedCar = new searchedCar({
         brandName: req.body.brandName,
+        model: req.body.model,
+        rating: req.body.rating,
+        trips: req.body.trips,
+        price: req.body.price,
         pickup: req.body.pickup,
         status: req.body.status,
         imgurl: req.body.imgrul
