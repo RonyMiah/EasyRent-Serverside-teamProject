@@ -8,6 +8,7 @@ const ConnectDB = require('./config/ConnectDB')
 //middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 
 
 // routes 
@@ -21,6 +22,7 @@ const userDetail = require('./router/userDetailsRoute')
 const findBasisBrandRoute = require('./router/findBasisBrandRoute');
 const findDataBrandRoute = require('./router/findDataBrandRoute');
 const addReviewRoute = require('./router/addReviewRouter');
+const PaymentRoute = require('./router/PaymentRouter')
 
 // use routes
 app.use("/api/auth", authRouter);
@@ -33,6 +35,7 @@ app.use('/api', findcars);
 app.use('/api', singleCar);
 app.use('/api', userDetail);
 app.use('/api', addReviewRoute);
+app.use('', PaymentRoute);
 
 
 app.get('/', (req, res) => {
