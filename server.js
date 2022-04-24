@@ -35,7 +35,7 @@ app.use('/api', findcars);
 app.use('/api', singleCar);
 app.use('/api', userDetail);
 app.use('/api', addReviewRoute);
-app.use('', PaymentRoute);
+app.use('/', PaymentRoute);
 
 
 app.get('/', (req, res) => {
