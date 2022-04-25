@@ -10,7 +10,7 @@ const Servicemodel = new mongoose.Schema(
     year: {
       type: Number,
       require: true,
-      unique: true,
+     
     },
     name: {
       type: String,
@@ -20,32 +20,32 @@ const Servicemodel = new mongoose.Schema(
     price: {
       type: Number,
       require: true,
-      unique: true,
+      
     },
     kilo: {
       type: Number,
       require: true,
-      unique: true,
+     
     },
     type: {
       type: String,
       require: true,
-      unique: true,
+     
     },
     fual: {
       type: String,
       require: true,
-      unique: true,
+     
     },
     discountPrice: {
       type: Number,
       require: true,
-      unique: true,
+      
     },
     details: {
       type: String,
       require: true,
-      unique: true,
+      
     },
   },
   { timeStamps: true }
