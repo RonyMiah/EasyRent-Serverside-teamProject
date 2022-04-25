@@ -1,8 +1,8 @@
-const serviceModel = require("../models/Servicemodel");
+const Service = require("../models/serviceModel");
 const router = require("express").Router();
 
-router.post("/service", async (req, res) => {
-  const serviceCar = new serviceModel({
+router.post("/addService", async (req, res) => {
+  const serviceCar = new Service({
     image: req.body.image,
     year: req.body.year,
     name: req.body.name,
