@@ -19,7 +19,7 @@ const singleCar = require("./router/singleCarRoute");
 const userDetail = require("./router/userDetailsRoute");
 const findBasisBrandRoute = require("./router/findBasisBrandRoute");
 const findDataBrandRoute = require("./router/findDataBrandRoute");
-// const findCarReviewRoute = require("./router/findCarReviewRoute");
+const findCarReviewRoute = require("./router/findCarReviewRoute");
 
 // use routes
 app.use("/api/auth", authRouter);
@@ -31,7 +31,7 @@ app.use("/api", searchingdRoute);
 app.use("/api", findcars);
 app.use("/api", singleCar);
 app.use("/api", userDetail);
-// app.use("/api/find", findCarReviewRoute);
+app.use("/api/find", findCarReviewRoute);
 
 app.get("/", (req, res) => {
   res.send("hello database");

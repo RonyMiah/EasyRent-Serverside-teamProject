@@ -18,10 +18,6 @@ const findCarReviewModals = new mongoose.Schema(
       type: String,
       require: true,
     },
-    description: {
-      type: String,
-      require: true,
-    },
   },
   { timeStamps: true }
 );

@@ -2,19 +2,18 @@ const findCarReview = require("../models/findCarReviewModals");
 const router = require("express").Router();
 
 router.post("/carReview", async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const carReview = new findCarReview({
-    // title: req.body.title,
-    // title: req.body.title,
-    // title: req.body.title,
-    // title: req.body.title,
-    // description: req.body.description,
-    // youtube_video_link: req.body.youtube_video_link,
+    name: req.body.name,
+    image: req.body.image,
+    star: req.body.star,
+    description: req.body.description,
   });
 
   try {
-    const carReview = await carReview.save();
-    res.status(201).json(carReview);
+    const singleCarReview = await carReview.save();
+    // console.log(carReview);
+    res.status(201).json(singleCarReview);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -22,8 +21,8 @@ router.post("/carReview", async (req, res) => {
 
 router.get("/carReview", async (req, res) => {
   try {
-    const carReview = await findCarReview.find();
-    res.status(200).json(carReview);
+    const singleCarReview = await findCarReview.find();
+    res.status(200).json(singleCarReview);
   } catch (error) {
     res.status(500).json(error);
   }
