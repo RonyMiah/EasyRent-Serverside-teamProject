@@ -1,10 +1,10 @@
 {
   "name": "hospital_endgame2_server_side",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "start-dev": "nodemon index.js",
+    "start": "node server.js",
+    "start-dev": "nodemon start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
