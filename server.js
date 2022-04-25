@@ -17,13 +17,15 @@ const searchingdRoute = require("./router/searchedCarRoute");
 const findcars = require("./router/searchedCarRoute");
 const serviceRoute = require("./router/serviceRoute");
 
+
 // use routes
 app.use("/api/auth", authRouter);
 app.use("/api/course", courseRoute);
 app.use("/api/find", carRoute);
 app.use("/api", searchingdRoute);
 app.use("/api", findcars);
-app.use("/", serviceRoute);
+app.use("/api", serviceRoute);
+
 
 app.get("/", (req, res) => {
   res.send("hello world");
