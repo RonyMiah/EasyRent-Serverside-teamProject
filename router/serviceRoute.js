@@ -24,7 +24,7 @@ router.post("/addService", async (req, res) => {
 
 router.get("/service", async (req, res) => {
   try {
-    const findService = await serviceModel.find();
+    const findService = await Service.find();
     console.log(findService);
     res.status(200).json(findService);
   } catch (error) {
