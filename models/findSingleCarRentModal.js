@@ -10,6 +10,10 @@ const findSingleCarRent = new mongoose.Schema(
       type: String,
       require: true,
     },
+    carName: {
+      type: String,
+      require: true,
+    },
     startDate: {
       type: String,
       require: true,

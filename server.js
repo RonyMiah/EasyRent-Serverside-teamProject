@@ -22,6 +22,7 @@ const findDataBrandRoute = require("./router/findDataBrandRoute");
 const addReviewRoute = require("./router/addReviewRouter");
 const findCarReviewRoute = require("./router/findCarReviewRoute");
 const findSingleCarRentRoute = require("./router/findSingleCarRentRoute");
+const sliderSingleBrandCarRoute = require("./router/sliderSingleBrandCarRoute");
 
 // use routes
 app.use("/api/auth", authRouter);
@@ -36,6 +37,7 @@ app.use("/api", singleCar);
 app.use("/api", userDetail);
 app.use("/api", addReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
+app.use("/api/find", sliderSingleBrandCarRoute);
 
 
 app.get("/", (req, res) => {

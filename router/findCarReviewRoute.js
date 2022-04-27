@@ -2,10 +2,11 @@ const findCarReview = require("../models/findCarReviewModals");
 const router = require("express").Router();
 
 router.post("/carReview", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const carReview = new findCarReview({
     name: req.body.name,
-    image: req.body.image,
+    image: req.body.image,    
+    carName: req.body.carName,
     star: req.body.star,
     description: req.body.description,
   });

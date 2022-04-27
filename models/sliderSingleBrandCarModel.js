@@ -1,24 +1,28 @@
 const mongoose = require("mongoose");
 
-const findCarReviewModals = new mongoose.Schema(
+const sliderSingleBrandCarModel = new mongoose.Schema(
   {
     name: {
       type: String,
       require: true,
     },
-    image: {
+    imgUrl1: {
       type: String,
       require: true,
     },
-    carName: {
+    imgUrl2: {
       type: String,
       require: true,
     },
-    star: {
-      type: Number,
+    imgUrl3: {
+      type: String,
       require: true,
     },
-    description: {
+    imgUrl4: {
+      type: String,
+      require: true,
+    },
+    imgUrl5: {
       type: String,
       require: true,
     },
@@ -26,4 +30,7 @@ const findCarReviewModals = new mongoose.Schema(
   { timeStamps: true }
 );
 
-module.exports = mongoose.model("Car Review", findCarReviewModals);
+module.exports = mongoose.model(
+  "sliderSingleBrandCar",
+  sliderSingleBrandCarModel
+);
