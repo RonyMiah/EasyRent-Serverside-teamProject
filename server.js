@@ -16,7 +16,7 @@ const carRoute = require("./router/carRoute");
 const searchingdRoute = require("./router/searchedCarRoute");
 const findcars = require("./router/searchedCarRoute");
 const serviceRoute = require("./router/serviceRoute");
-
+const mainService = require("./router/mainServiceRoute");
 
 // use routes
 app.use("/api/auth", authRouter);
@@ -25,6 +25,7 @@ app.use("/api/find", carRoute);
 app.use("/api", searchingdRoute);
 app.use("/api", findcars);
 app.use("/api", serviceRoute);
+app.use("/api", mainService);
 
 
 app.get("/", (req, res) => {
