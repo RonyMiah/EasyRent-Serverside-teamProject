@@ -1,9 +1,9 @@
 const express = require("express");
 module.export = app = express();
 const port = process.env.PORT || 5000;
-const cors = require("cors");
-const dotenv = require("dotenv").config();
-const ConnectDB = require("./config/ConnectDB");
+const cors = require('cors');
+require('dotenv').config();
+const ConnectDB = require('./config/ConnectDB')
 
 //middleware
 app.use(cors());
@@ -28,10 +28,12 @@ app.use("/api", serviceRoute);
 app.use("/api", mainService);
 
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+
+app.get('/', (req, res) => {
+  res.send('hello database');
+})
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+  console.log(`Server is running on port ${port}`)
+})
+

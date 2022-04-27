@@ -4,7 +4,22 @@ const searchedCar = new mongoose.Schema({
     brandName: {
         type: String,
         require: true,
-        unique: true
+    },
+    model: {
+        type: String,
+        require: true,
+    },
+    rating: {
+        type: Number,
+        require: true,
+    },
+    trips: {
+        type: Number,
+        require: true,
+    },
+    price: {
+        type: Number,
+        require: true,
     },
     pickup: {
         type: String,
