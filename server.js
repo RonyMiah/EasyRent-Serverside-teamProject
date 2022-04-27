@@ -13,12 +13,17 @@ app.use(express.json());
 // routes 
 const authRouter = require('./router/authRoute')
 const courseRoute = require('./router/courseRoute')
+const userRoute = require("./router/userRouter");
+
+
 
 
 
 // use routes 
 app.use('/api/auth', authRouter);
 app.use('/api/course', courseRoute);
+app.use("/api/users", userRoute);
+
 
 app.get('/', (req, res) => {
   res.send('hello database');
