@@ -10,6 +10,7 @@ router.post("/singleCarRent", async (req, res) => {
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     rent: req.body.rent,
+    location: req.body.location,
   });
 
   try {

@@ -25,6 +25,9 @@ const findSingleCarRent = new mongoose.Schema(
     rent: {
       type: Number,
     },
+    location: {
+      type: String,
+    },
   },
   { timeStamps: true }
 );
