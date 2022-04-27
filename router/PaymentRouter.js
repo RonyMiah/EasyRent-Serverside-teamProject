@@ -5,17 +5,17 @@ const { v4: uuidv4 } = require('uuid');
 
 
 //sslcommerz init
-router.post('/init', (req, res) => {
-    const data = new paymentModels ({
+router.post('/init', async (req, res) => {
+    const data = new paymentModels({
         total_amount: req.body.carInfo.price,
         currency: 'BDT',
         tran_id: uuidv4(),
-        success_url: 'http://localhost:5000/success',
-        fail_url: 'http://localhost:5000/fail',
-        cancel_url: 'http://localhost:5000/cancel',
-        ipn_url: 'http://localhost:5000/ipn',
+        success_url: 'https://guarded-taiga-13015.herokuapp.com/success',
+        fail_url: 'https://guarded-taiga-13015.herokuapp.com/fail',
+        cancel_url: 'https://guarded-taiga-13015.herokuapp.com/cancel',
+        ipn_url: 'https://guarded-taiga-13015.herokuapp.com/ipn',
         shipping_method: 'Courier',
-        paymentStatus:'pending',
+        paymentStatus: 'pending',
         product_name: req.body.carInfo.brandName,
         product_imgUrl: req.body.carInfo.imgUrl,
         product_category: 'Electronic',
@@ -44,7 +44,8 @@ router.post('/init', (req, res) => {
         value_c: 'ref003_C',
         value_d: 'ref004_D'
     });
-    const sslcommer = new SSLCommerzPayment(process.env.STORE_ID,process.env.STORE_PASS,false) //true for live default false for sandbox
+    const user = await data.save();
+    const sslcommer = new SSLCommerzPayment(process.env.STORE_ID, process.env.STORE_PASS, false) //true for live default false for sandbox
     sslcommer.init(data).then(data => {
         //process the response that got from sslcommerz 
         //https://developer.sslcommerz.com/doc/v4/#returned-parameters
@@ -57,17 +58,40 @@ router.post('/init', (req, res) => {
 })
 
 router.post("/success", async (req, res) => {
-    console.log(req.body)
-    res.status(200).json(req.body)
+    const filter = { tran_id: req.body.tran_id };
+    const update = { val_id: req.body.val_id };
+    let order = await paymentModels.findOneAndUpdate(filter, update, {new: true});
+    res.status(200).redirect(`https://easyrent-85ae2.web.app/paymentsuccess/${req.body.tran_id}`)
+    
+})
+router.post('/fail', async (req, res) => {
+    const filter = { tran_id: req.body.tran_id };
+    res.status(400).json(req.body)
+    let order = await paymentModels.findOneAndDelete(filter, {new: true});
+});
+router.post('/cancel', async (req, res) => {
+    const filter = { tran_id: req.body.tran_id };
+    res.status(200).redirect('https://easyrent-85ae2.web.app/paymentcancel')
+    let order = await paymentModels.findOneAndDelete(filter, {new: true});
+});
+
+router.get('/orders/:tran_id', async (req, res) => {
+    const id = req.params.tran_id
+    let order = await paymentModels.findOne({tran_id:id})
+    res.status(200).json(order)
+});
+
+router.post('/validate', async (req,res)=>{
+    let order = await paymentModels.findOne({tran_id:req.body.tran_id})
+    if(order.val_id === req.body.val_id){
+        const filter = { tran_id: req.body.tran_id };
+        const update = {paymentStatus: 'Successful' };
+        let order = await paymentModels.findOneAndUpdate(filter, update, {new: true});
+        res.send(order.paymentStatus)
+    }
+    else {
+        return res.status(401).json("Paymnet not done");
+      }
 
 })
-router.post('/fail', async(req, res)=>{
-    res.status(400).json(req.body)
-    console.log(req.body)
-});
-router.post('/cancel', async(req, res)=>{
-    console.log(req.body)
-    res.status(200).json(req.body)
-});
-
 module.exports = router;

@@ -107,6 +107,9 @@ const paymentModels = new mongoose.Schema({
     value_d:{
         type: String
     },
+    val_id:{
+        type: String
+    },
 }, { timeStamps: true });
 
 module.exports = mongoose.model("paymentModels", paymentModels);
