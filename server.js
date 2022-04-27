@@ -13,6 +13,7 @@ app.use(express.json());
 // routes 
 const authRouter = require('./router/authRoute');
 const courseRoute = require('./router/courseRoute');
+const userRoute = require("./router/userRouter");
 const carRoute = require('./router/carRoute');
 const searchingdRoute = require('./router/searchedCarRoute');
 const findcars = require('./router/searchedCarRoute');
@@ -24,6 +25,7 @@ const addReviewRoute = require('./router/addReviewRouter');
 
 // use routes
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRoute);
 app.use("/api/course", courseRoute);
 app.use("/api/find", carRoute);
 app.use("/api/find", findBasisBrandRoute);
@@ -33,6 +35,11 @@ app.use('/api', findcars);
 app.use('/api', singleCar);
 app.use('/api', userDetail);
 app.use('/api', addReviewRoute);
+
+
+
+
+
 
 
 app.get('/', (req, res) => {
