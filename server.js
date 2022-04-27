@@ -8,12 +8,15 @@ const ConnectDB = require('./config/ConnectDB')
 //middleware
 app.use(cors());
 app.use(express.json());
+// app.use(express.urlencoded());
+
 
 
 // routes 
 const authRouter = require('./router/authRoute')
 const courseRoute = require('./router/courseRoute')
 const userRoute = require("./router/userRouter");
+const chatRoute = require("./router/chatRoute");
 
 
 
@@ -22,7 +25,8 @@ const userRoute = require("./router/userRouter");
 // use routes 
 app.use('/api/auth', authRouter);
 app.use('/api/course', courseRoute);
-app.use("/api/users", userRoute);
+app.use('/auth', chatRoute);
+
 
 
 app.get('/', (req, res) => {
