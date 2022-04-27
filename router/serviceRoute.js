@@ -32,4 +32,14 @@ router.get("/service", async (req, res) => {
   }
 });
 
+
+   // Get singel booking
+
+  router.get('/service/:id', async (req, res) => {
+    const id = req.params.id;
+    const service = await Service.findOne({_id: id});
+    res.status(200).json(service);
+  })
+
+
 module.exports = router;
