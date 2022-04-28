@@ -39,18 +39,14 @@ app.use("/api", searchingdRoute);
 app.use("/api", findcars);
 app.use("/api", serviceRoute);
 app.use("/api", mainService);
-
 app.use("/api/find", findBasisBrandRoute);
 app.use("/api/find", findDataBrandRoute);
-
 app.use("/api/find", findCarReviewRoute);
-
 app.use("/api", singleCar);
 app.use("/api", userDetail);
 app.use("/api", addReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
-
 app.get("/", (req, res) => {
   res.send("hello database");
 });

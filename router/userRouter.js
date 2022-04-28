@@ -1,23 +1,23 @@
 const User = require("../models/userModel");
 const router = require("express").Router();
 
-<<<<<<< HEAD
-router.put("/:id", async (req, res) => {
-  if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString();
-  }
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-=======
+// router.put("/:id", async (req, res) => {
+//   if (req.body.password) {
+//     req.body.password = CryptoJS.AES.encrypt(
+//       req.body.password,
+//       process.env.PASS_SEC
+//     ).toString();
+//   }
+//   try {
+//     const updatedUser = await User.findByIdAndUpdate(
+//       req.params.id,
+//       {
+//         $set: req.body,
+//       },
+//       { new: true }
+//     );
+
+    
 // router.put("/find/:id", verifyToken, async (req, res) => {
 //   if (req.body.password) {
 //     req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString()
@@ -35,7 +35,6 @@ router.put("/:id", async (req, res) => {
 
 // })
 
->>>>>>> 67de8f3c3898e9807551aa087adfdd79c58b1638
 
 
 router.get("/find/:id", async (req, res) => {
@@ -49,10 +48,8 @@ router.get("/find/:id", async (req, res) => {
 });
 
 
-<<<<<<< HEAD
 
 
-=======
 router.get("/findAll", async (req, res) => {
   try {
     const user = await User.find();
@@ -63,4 +60,3 @@ router.get("/findAll", async (req, res) => {
 });
 
 module.exports = router;
->>>>>>> 67de8f3c3898e9807551aa087adfdd79c58b1638
