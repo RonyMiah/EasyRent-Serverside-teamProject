@@ -1,23 +1,8 @@
 const User = require("../models/userModel");
+const verifyToken = require("./verifyToken");
+
 const router = require("express").Router();
 
-// router.put("/:id", async (req, res) => {
-//   if (req.body.password) {
-//     req.body.password = CryptoJS.AES.encrypt(
-//       req.body.password,
-//       process.env.PASS_SEC
-//     ).toString();
-//   }
-//   try {
-//     const updatedUser = await User.findByIdAndUpdate(
-//       req.params.id,
-//       {
-//         $set: req.body,
-//       },
-//       { new: true }
-//     );
-
-    
 // router.put("/find/:id", verifyToken, async (req, res) => {
 //   if (req.body.password) {
 //     req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString()
@@ -46,8 +31,6 @@ router.get("/find/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 
 router.get("/findAll", async (req, res) => {
