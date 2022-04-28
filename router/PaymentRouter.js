@@ -10,10 +10,10 @@ router.post('/init', async (req, res) => {
         total_amount: req.body.carInfo.price,
         currency: 'BDT',
         tran_id: uuidv4(),
-        success_url: 'https://guarded-taiga-13015.herokuapp.com/success',
-        fail_url: 'https://guarded-taiga-13015.herokuapp.com/fail',
-        cancel_url: 'https://guarded-taiga-13015.herokuapp.com/cancel',
-        ipn_url: 'https://guarded-taiga-13015.herokuapp.com/ipn',
+        success_url: 'http://localhost:5000/success',
+        fail_url: 'http://localhost:5000/fail',
+        cancel_url: 'http://localhost:5000/cancel',
+        ipn_url: 'http://localhost:5000/ipn',
         shipping_method: 'Courier',
         paymentStatus: 'pending',
         product_name: req.body.carInfo.brandName,
@@ -61,7 +61,7 @@ router.post("/success", async (req, res) => {
     const filter = { tran_id: req.body.tran_id };
     const update = { val_id: req.body.val_id };
     let order = await paymentModels.findOneAndUpdate(filter, update, {new: true});
-    res.status(200).redirect(`https://easyrent-85ae2.web.app/paymentsuccess/${req.body.tran_id}`)
+    res.status(200).redirect(`http://localhost:3000/paymentsuccess/${req.body.tran_id}`)
     
 })
 router.post('/fail', async (req, res) => {
@@ -71,7 +71,7 @@ router.post('/fail', async (req, res) => {
 });
 router.post('/cancel', async (req, res) => {
     const filter = { tran_id: req.body.tran_id };
-    res.status(200).redirect('https://easyrent-85ae2.web.app/paymentcancel')
+    res.status(200).redirect('http://localhost:3000/paymentcancel')
     let order = await paymentModels.findOneAndDelete(filter, {new: true});
 });
 
