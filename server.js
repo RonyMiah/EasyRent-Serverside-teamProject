@@ -30,10 +30,6 @@ const findSingleCarRentRoute = require("./router/findSingleCarRentRoute");
 const sliderSingleBrandCarRoute = require("./router/sliderSingleBrandCarRoute");
 const chatRoute = require("./router/chatRoute");
 
-
-
-
-
 // use routes
 app.use("/", PaymentRoute);
 app.use("/api", mainService);
