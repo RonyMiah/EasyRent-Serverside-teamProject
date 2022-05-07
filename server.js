@@ -13,6 +13,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 
+
+
+
+
+
+
 // routes 
 const authRouter = require('./router/authRoute');
 const courseRoute = require('./router/courseRoute');
@@ -27,7 +33,6 @@ const findDataBrandRoute = require('./router/findDataBrandRoute');
 const chatRoute = require("./router/chatRoute");
 const addReviewRoute = require('./router/addReviewRouter');
 const PaymentRoute = require('./router/PaymentRouter')
-// routes
 const serviceRoute = require("./router/serviceRoute");
 const mainService = require("./router/mainServiceRoute");
 
