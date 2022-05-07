@@ -1,27 +1,26 @@
 const mongoose = require('mongoose');
 
-const serviceSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        require: true,
-        unique: true
-    },
-    description: {
+const addReviews = new mongoose.Schema({
+    name: {
         type: String,
         require: true,
     },
-    img: {
+    imgUrl: {
         type: String,
         require: true,
     },
-    price: {
+    designation: {
+        type: String,
+        require: true,
+    },
+    rating: {
         type: Number,
-        require: true
+        require: true,
     },
-    pickPoint: {
+    opinion: {
         type: String,
-        require: true
-    }
+        require: true,
+    },
 }, { timeStamps: true });
 
-module.exports = mongoose.model("Services", serviceSchema);
+module.exports = mongoose.model("addReviews", addReviews);
