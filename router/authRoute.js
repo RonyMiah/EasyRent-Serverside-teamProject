@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
 
     try {
         const saveUser = await newUser.save();
-        console.log(saveUser);
+        // console.log(saveUser);
         res.status(201).json(saveUser);
     } catch (error) {
         res.status(500).json(error);
@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({
-            userName: req.body.userName,
+            email: req.body.email,
         });
 
         !user && res.status(401).json("User Not Found !");
@@ -54,6 +54,7 @@ router.post("/login", async (req, res) => {
         res.status(500).json(error);
     }
 });
+
 
 router.delete("/logout", async (req, res) => {
     const user = await User.findOne({

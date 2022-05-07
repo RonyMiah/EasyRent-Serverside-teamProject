@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
-const verifyToken = require("./verifyToken");
+const router = require('express').Router();
 
-const router = require("express").Router();
+const verifyToken = require("./verifyToken");
 
 // router.put("/find/:id", verifyToken, async (req, res) => {
 //   if (req.body.password) {
