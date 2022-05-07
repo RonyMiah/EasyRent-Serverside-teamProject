@@ -26,7 +26,7 @@ router.post('/searchedcar', async (req, res) => {
 router.get('/findcar', async (req, res) => {
     const pickup = req.query.pickup
     try {
-        const findcars = await searchedCar.find({pickup});
+        const findcars = await searchedCar.find({ pickup });
         res.status(200).json(findcars);
     } catch (error) {
         res.status(500).json(error);

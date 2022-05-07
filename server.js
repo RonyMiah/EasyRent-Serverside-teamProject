@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 // app.use(express.urlencoded());
 
+app.use(express.urlencoded({extended:true}))
 
 
 // routes 
@@ -25,6 +26,10 @@ const findBasisBrandRoute = require('./router/findBasisBrandRoute');
 const findDataBrandRoute = require('./router/findDataBrandRoute');
 const chatRoute = require("./router/chatRoute");
 const addReviewRoute = require('./router/addReviewRouter');
+const PaymentRoute = require('./router/PaymentRouter')
+// routes
+const serviceRoute = require("./router/serviceRoute");
+const mainService = require("./router/mainServiceRoute");
 
 
 
@@ -43,6 +48,12 @@ app.use('/api', findcars);
 app.use('/api', singleCar);
 app.use('/api', userDetail);
 app.use('/api', addReviewRoute);
+app.use('/', PaymentRoute);
+app.use("/api", searchingdRoute);
+app.use("/api", findcars);
+app.use("/api", serviceRoute);
+app.use("/api", mainService);
+
 
 
 
