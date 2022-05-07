@@ -47,6 +47,8 @@ app.use("/api", userDetail);
 app.use("/api", addReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
+
+
 app.get("/", (req, res) => {
   res.send("hello database");
 });
