@@ -18,13 +18,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
     "nodemon": "^2.0.15",
-<<<<<<< HEAD
-    "socket.io": "^4.4.1"
-=======
     "socket.io": "^4.4.1",
     "sslcommerz": "^1.6.6",
     "uuid": "^8.3.2"
->>>>>>> fd293408c33994190b8f669eb7cea91626f7461e
   },
   "repository": {
     "type": "git",
