@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
+
 // routes
 const PaymentRoute = require("./router/PaymentRouter");
 const mainService = require("./router/mainServiceRoute");
@@ -29,6 +32,9 @@ const findCarReviewRoute = require("./router/findCarReviewRoute");
 const findSingleCarRentRoute = require("./router/findSingleCarRentRoute");
 const sliderSingleBrandCarRoute = require("./router/sliderSingleBrandCarRoute");
 const chatRoute = require("./router/chatRoute");
+
+
+
 
 // use routes
 app.use("/", PaymentRoute);
@@ -50,9 +56,13 @@ app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
 app.use("/auth", chatRoute);
 
+
+
+
 app.get("/", (req, res) => {
   res.send("hello database");
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
