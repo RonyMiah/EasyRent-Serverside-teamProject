@@ -12,7 +12,7 @@ router.post('/userdetails', async (req, res) => {
     try {
         const user = await userDetail.save();
         res.status(201).json(user);
-    } catch (error) {
+    } catch (error){
         res.status(500).json(error);
     }
 });
