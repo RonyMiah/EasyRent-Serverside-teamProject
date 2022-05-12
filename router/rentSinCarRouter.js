@@ -10,10 +10,10 @@ router.post("/init", async (req, res) => {
     total_amount: req.body.rent,
     currency: "BDT",
     tran_id: uuidv4(),
-    success_url: "http://localhost:5000/success",
-    fail_url: "http://localhost:5000/fail",
-    cancel_url: "http://localhost:5000/cancel",
-    ipn_url: "http://localhost:5000/ipn",
+    success_url: "http://localhost:5000/api/find/success",
+    fail_url: "http://localhost:5000/api/find/fail",
+    cancel_url: "http://localhost:5000/api/find/cancel",
+    ipn_url: "http://localhost:5000/api/find/ipn",
     shipping_method: "Courier",
     paymentStatus: "pending",
     product_name: req.body.carName,
@@ -46,8 +46,8 @@ router.post("/init", async (req, res) => {
   });
   const user = await data.save();
   const sslcommer = new SSLCommerzPayment(
-    process.env.STORE_ID,
-    process.env.STORE_PASS,
+    process.env.STORE_ID1,
+    process.env.STORE_PASS1,
     false
   ); //true for live default false for sandbox
   sslcommer.init(data).then((data) => {
