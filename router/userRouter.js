@@ -40,4 +40,21 @@ router.get("/findAll", async (req, res) => {
   }
 });
 
+router.delete('/deleteUser/:id' , async(req, res) => {
+  console.log(req.params.id)
+  await User.deleteOne({ _id: req.params.id}, (err) => {
+      if(err){
+          res.status(500).send({
+              error: 'There was a server side error'
+          })
+      } else {
+          res.status(200).json({
+              message: "Todo is deleted successfully"
+          })
+      }
+  }).clone()
+  
+
+});
+
 module.exports = router;
