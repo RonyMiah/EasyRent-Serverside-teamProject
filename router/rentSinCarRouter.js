@@ -8,7 +8,7 @@ router.post("/init", async (req, res) => {
   console.log("hitting", req.body);
   const data = new rentSinCarModal({
     total_amount: req.body.rent,
-    currency: "BDT",
+    currency: "USD",
     tran_id: uuidv4(),
     success_url: "http://localhost:5000/api/find/success",
     fail_url: "http://localhost:5000/api/find/fail",
@@ -18,31 +18,24 @@ router.post("/init", async (req, res) => {
     paymentStatus: "pending",
     product_name: req.body.carName,
     product_imgUrl: req.body.imgUrl,
-    product_category: "Electronic",
-    product_profile: "general",
+    product_category: "Brand",
+    product_profile: "Car",
     cus_name: req.body.name,
     cus_email: req.body.email,
     cus_img: req.body.imgURL,
-    cus_add1: "Dhaka",
-    cus_add2: "Dhaka",
-    cus_city: "Dhaka",
-    cus_state: "Dhaka",
-    cus_postcode: 1000,
+    cus_add1: req.body.location,
+    cus_city: req.body.location,
     cus_country: "Bangladesh",
-    cus_phone: 0171111111,
-    cus_fax: 01711111111,
-    ship_name: "Customer Name",
-    ship_add1: "Dhaka",
-    ship_add2: "Dhaka",
-    ship_city: "Dhaka",
-    ship_state: "Dhaka",
+    cus_phone: 0171111,
+    ship_name: req.body.name,
+    ship_add1: req.body.location,
+    ship_city: req.body.location,
+    ship_state: req.body.startValue,
     ship_postcode: 1000,
     ship_country: "Bangladesh",
     multi_card_name: "mastercard",
-    value_a: "ref001_A",
-    value_b: "ref002_B",
-    value_c: "ref003_C",
-    value_d: "ref004_D",
+    date_start: req.body.startDate,
+    date_end: req.body.endDate,
   });
   const user = await data.save();
   const sslcommer = new SSLCommerzPayment(
@@ -53,7 +46,7 @@ router.post("/init", async (req, res) => {
   sslcommer.init(data).then((data) => {
     //process the response that got from sslcommerz
     //https://developer.sslcommerz.com/doc/v4/#returned-parameters
-    console.log(data.GatewayPageURL);
+    // console.log(data.GatewayPageURL);
     try {
       res.status(201).json(data.GatewayPageURL);
     } catch (error) {
@@ -63,14 +56,12 @@ router.post("/init", async (req, res) => {
 });
 
 router.post("/success", async (req, res) => {
-  console.log("success");
   const filter = { tran_id: req.body.tran_id };
   const update = { val_id: req.body.val_id };
   let order = await rentSinCarModal.findOneAndUpdate(filter, update, {
     new: true,
   });
 
-  console.log(`http://localhost:3000/rent/${req.body.tran_id}`);
   res.status(200).redirect(`http://localhost:3000/rent/${req.body.tran_id}`);
 });
 router.post("/fail", async (req, res) => {
@@ -84,23 +75,24 @@ router.post("/cancel", async (req, res) => {
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 
-// router.get("/orders/:tran_id", async (req, res) => {
-//   const id = req.params.tran_id;
-//   let order = await rentSinCarModal.findOne({ tran_id: id });
-//   res.status(200).json(order);
-// });
+router.get("/orderCar/:tran_id", async (req, res) => {
+  const id = req.params.tran_id;
+  let order = await rentSinCarModal.findOne({ tran_id: id });
+  res.status(200).json(order);
+});
 
-// router.post("/validate", async (req, res) => {
-//   let order = await rentSinCarModal.findOne({ tran_id: req.body.tran_id });
-//   if (order.val_id === req.body.val_id) {
-//     const filter = { tran_id: req.body.tran_id };
-//     const update = { paymentStatus: "Successful" };
-//     let order = await rentSinCarModal.findOneAndUpdate(filter, update, {
-//       new: true,
-//     });
-//     res.send(order.paymentStatus);
-//   } else {
-//     return res.status(401).json("Paymnet not done");
-//   }
-// });
+router.post("/confirm", async (req, res) => {
+  let order = await rentSinCarModal.findOne({ tran_id: req.body.tran_id });
+  if (order.val_id === req.body.val_id) {
+    const filter = { tran_id: req.body.tran_id };
+    const update = { paymentStatus: "Successful" };
+    let order = await rentSinCarModal.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+    res.send(order.paymentStatus);
+  } else {
+    return res.status(401).json("Payment not complete");
+  }
+});
+
 module.exports = router;

@@ -51,17 +51,8 @@ const paymentModels = new mongoose.Schema(
     cus_add1: {
       type: String,
     },
-    cus_add2: {
-      type: String,
-    },
     cus_city: {
       type: String,
-    },
-    cus_state: {
-      type: String,
-    },
-    cus_postcode: {
-      type: Number,
     },
     cus_country: {
       type: String,
@@ -69,16 +60,10 @@ const paymentModels = new mongoose.Schema(
     cus_phone: {
       type: Number,
     },
-    cus_fax: {
-      type: Number,
-    },
     ship_name: {
       type: String,
     },
     ship_add1: {
-      type: String,
-    },
-    ship_add2: {
       type: String,
     },
     ship_city: {
@@ -96,19 +81,13 @@ const paymentModels = new mongoose.Schema(
     multi_card_name: {
       type: String,
     },
-    value_a: {
-      type: String,
-    },
-    value_b: {
-      type: String,
-    },
-    value_c: {
-      type: String,
-    },
-    value_d: {
-      type: String,
-    },
     val_id: {
+      type: String,
+    },
+    date_start: {
+      type: String,
+    },
+    date_end: {
       type: String,
     },
   },
