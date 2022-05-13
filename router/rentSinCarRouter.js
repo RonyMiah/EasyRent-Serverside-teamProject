@@ -95,4 +95,13 @@ router.post("/confirm", async (req, res) => {
   }
 });
 
+router.get("/rentAllCars", async (req, res) => {
+  try {
+    const all = await rentSinCarModal.find();
+    res.status(200).json(all);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
