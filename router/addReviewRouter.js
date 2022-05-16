@@ -28,5 +28,21 @@ router.get('/addreview', async(req, res)=>{
         res.status(500).json(error);
     }
 });
+router.delete('/delete/:id' , async(req, res) => {
+    
+    await addReviews.deleteOne({ _id: req.params.id}, (err) => {
+        if(err){
+            res.status(500).send({
+                error: 'There was a server side error'
+            })
+        } else {
+            res.status(200).json({
+                message: "Todo is deleted successfully"
+            })
+        }
+    }).clone()
+    
+
+});
 
 module.exports = router;
