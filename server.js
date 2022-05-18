@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // routes
 
 const serviceRoute = require("./router/serviceRoute");
-const PaymentRoute = require("./router/PaymentRouter");
+// const PaymentRoute = require("./router/PaymentRouter");
 const mainService = require("./router/mainServiceRoute");
 const findcars = require("./router/searchedCarRoute");
 const searchingdRoute = require("./router/searchedCarRoute");
@@ -40,7 +40,7 @@ const userOrders = require("./router/getUserOrders");
 const allOrders = require("./router/getAllOrders");
 
 // use routes
-app.use("/", PaymentRoute);
+// app.use("/", PaymentRoute);
 app.use("/api", mainService);
 app.use("/api", serviceRoute);
 app.use("/api", searchingdRoute);

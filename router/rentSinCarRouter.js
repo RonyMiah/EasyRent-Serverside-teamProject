@@ -66,12 +66,13 @@ router.post("/success", async (req, res) => {
 });
 router.post("/fail", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
-  res.status(400).json(req.body);
+  // res.status(400).json(req.body);
+  res.status(200).redirect("http://localhost:3000/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 router.post("/cancel", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
-  res.status(200).redirect("http://localhost:3000/");
+  res.status(200).redirect("http://localhost:3000/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 
