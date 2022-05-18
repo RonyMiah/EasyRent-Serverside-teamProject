@@ -23,7 +23,7 @@ router.post('/init', async (req, res) => {
         cus_name: req.body.name,
         cus_email: req.body.email,
         cus_img: req.body.imgURL,
-        cus_add1: 'Dhaka',
+        cus_add1: req.body.carInfo.pickup,
         cus_add2: 'Dhaka',
         cus_city: 'Dhaka',
         cus_state: 'Dhaka',
