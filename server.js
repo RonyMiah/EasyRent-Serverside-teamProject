@@ -58,7 +58,7 @@ app.use("/api", findcars);
 app.use("/api", newOrderRoute);
 app.use("/api", userOrders);
 app.use("/api", allOrders);
-console.log(newOrderRoute);
+// console.log(newOrderRoute);
 app.use("/api/find", findCarReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
