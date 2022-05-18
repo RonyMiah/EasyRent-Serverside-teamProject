@@ -6,12 +6,16 @@ router.post("/singleCarRent", async (req, res) => {
   const singleCarRent = new findSingleCarRent({
     name: req.body.name,
     email: req.body.email,
+    photoURL: req.body.photoURL,
     carName: req.body.carName,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     rent: req.body.rent,
     location: req.body.location,
+    image: req.body.imgUrl,
+    rentStatus: req.body.rentStatus,
   });
+  console.log(singleCarRent);
 
   try {
     const singleRentCar = await singleCarRent.save();

@@ -32,6 +32,8 @@ const findDataBrandRoute = require("./router/findDataBrandRoute");
 const findCarReviewRoute = require("./router/findCarReviewRoute");
 const findSingleCarRentRoute = require("./router/findSingleCarRentRoute");
 const sliderSingleBrandCarRoute = require("./router/sliderSingleBrandCarRoute");
+const rentSinCarRouter = require("./router/rentSinCarRouter");
+const allCourseRouter = require("./router/allCourseRouter");
 const chatRoute = require("./router/chatRoute");
 const newOrderRoute = require("./router/createOrder");
 const userOrders = require("./router/getUserOrders");
@@ -56,10 +58,12 @@ app.use("/api", findcars);
 app.use("/api", newOrderRoute);
 app.use("/api", userOrders);
 app.use("/api", allOrders);
-console.log(newOrderRoute);
+// console.log(newOrderRoute);
 app.use("/api/find", findCarReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
+app.use("/api/find", rentSinCarRouter);
+app.use("/api/find", allCourseRouter);
 app.use("/auth", chatRoute);
 
 app.get("/", (req, res) => {
