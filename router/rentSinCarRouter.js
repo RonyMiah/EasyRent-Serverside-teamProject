@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 //sslcommerz init
 router.post("/init", async (req, res) => {
-  console.log("hitting", req.body);
+  // console.log("hitting", req.body);
   const data = new rentSinCarModal({
     total_amount: req.body?.rent,
     currency: "USD",
@@ -46,7 +46,7 @@ router.post("/init", async (req, res) => {
   sslcommer.init(data).then((data) => {
     //process the response that got from sslcommerz
     //https://developer.sslcommerz.com/doc/v4/#returned-parameters
-    console.log(data.GatewayPageURL);
+    // console.log(data.GatewayPageURL);
     try {
       res.status(201).json(data.GatewayPageURL);
     } catch (error) {
