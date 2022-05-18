@@ -26,7 +26,6 @@ const paymentModels = new mongoose.Schema(
     paymentStatus: {
       type: String,
     },
-
     product_name: {
       type: String,
     },

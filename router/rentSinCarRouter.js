@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 router.post("/init", async (req, res) => {
   console.log("hitting", req.body);
   const data = new rentSinCarModal({
-    total_amount: req.body.rent,
+    total_amount: req.body?.rent,
     currency: "USD",
     tran_id: uuidv4(),
     success_url: "http://localhost:5000/api/find/success",
@@ -16,26 +16,26 @@ router.post("/init", async (req, res) => {
     ipn_url: "http://localhost:5000/api/find/ipn",
     shipping_method: "Courier",
     paymentStatus: "pending",
-    product_name: req.body.carName,
-    product_imgUrl: req.body.imgUrl,
+    product_name: req.body?.carName,
+    product_imgUrl: req.body?.imgUrl,
     product_category: "Brand",
     product_profile: "Car",
-    cus_name: req.body.name,
-    cus_email: req.body.email,
-    cus_img: req.body.imgURL,
-    cus_add1: req.body.location,
-    cus_city: req.body.location,
+    cus_name: req.body?.name,
+    cus_email: req.body?.email,
+    cus_img: req.body?.imgURL,
+    cus_add1: req.body?.location,
+    cus_city: req.body?.location,
     cus_country: "Bangladesh",
     cus_phone: 0171111,
-    ship_name: req.body.name,
-    ship_add1: req.body.location,
-    ship_city: req.body.location,
-    ship_state: req.body.startValue,
+    ship_name: req.body?.name,
+    ship_add1: req.body?.location,
+    ship_city: req.body?.location,
+    ship_state: req.body?.startValue,
     ship_postcode: 1000,
     ship_country: "Bangladesh",
     multi_card_name: "mastercard",
-    date_start: req.body.startDate,
-    date_end: req.body.endDate,
+    date_start: req.body?.startDate,
+    date_end: req.body?.endDate,
   });
   const user = await data.save();
   const sslcommer = new SSLCommerzPayment(
@@ -46,7 +46,7 @@ router.post("/init", async (req, res) => {
   sslcommer.init(data).then((data) => {
     //process the response that got from sslcommerz
     //https://developer.sslcommerz.com/doc/v4/#returned-parameters
-    // console.log(data.GatewayPageURL);
+    console.log(data.GatewayPageURL);
     try {
       res.status(201).json(data.GatewayPageURL);
     } catch (error) {
