@@ -10,6 +10,9 @@ const findSingleCarRent = new mongoose.Schema(
       type: String,
       require: true,
     },
+    photoURL: {
+      type: String,
+    },
     carName: {
       type: String,
       require: true,
@@ -26,6 +29,12 @@ const findSingleCarRent = new mongoose.Schema(
       type: Number,
     },
     location: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+    rentStatus: {
       type: String,
     },
   },

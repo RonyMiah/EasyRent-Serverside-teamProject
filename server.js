@@ -10,11 +10,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
 // routes
-const PaymentRoute = require("./router/PaymentRouter");
+
+const serviceRoute = require("./router/serviceRoute");
+// const PaymentRoute = require("./router/PaymentRouter");
 const mainService = require("./router/mainServiceRoute");
 const findcars = require("./router/searchedCarRoute");
-const serviceRoute = require("./router/serviceRoute");
 const searchingdRoute = require("./router/searchedCarRoute");
 const singleCar = require("./router/singleCarRoute");
 const userDetail = require("./router/userDetailsRoute");
@@ -29,12 +32,16 @@ const findDataBrandRoute = require("./router/findDataBrandRoute");
 const findCarReviewRoute = require("./router/findCarReviewRoute");
 const findSingleCarRentRoute = require("./router/findSingleCarRentRoute");
 const sliderSingleBrandCarRoute = require("./router/sliderSingleBrandCarRoute");
+const rentSinCarRouter = require("./router/rentSinCarRouter");
+const allCourseRouter = require("./router/allCourseRouter");
 const chatRoute = require("./router/chatRoute");
+const newOrderRoute = require("./router/createOrder");
+const userOrders = require("./router/getUserOrders");
+const allOrders = require("./router/getAllOrders");
 
 // use routes
-app.use("/", PaymentRoute);
+// app.use("/", PaymentRoute);
 app.use("/api", mainService);
-app.use("/api", findcars);
 app.use("/api", serviceRoute);
 app.use("/api", searchingdRoute);
 app.use("/api", singleCar);
@@ -47,9 +54,16 @@ app.use("/api/course", courseRoute);
 app.use("/api/find", carRoute);
 app.use("/api/find", findBasisBrandRoute);
 app.use("/api/find", findDataBrandRoute);
+app.use("/api", findcars);
+app.use("/api", newOrderRoute);
+app.use("/api", userOrders);
+app.use("/api", allOrders);
+// console.log(newOrderRoute);
 app.use("/api/find", findCarReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
+app.use("/api/find", rentSinCarRouter);
+app.use("/api/find", allCourseRouter);
 app.use("/auth", chatRoute);
 
 app.get("/", (req, res) => {
