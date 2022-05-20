@@ -24,7 +24,7 @@ router.post("/addMainService", async (req, res) => {
   router.get("/service_main", async (req, res) => {
     try {
       const findService = await Mainservice.find();
-      console.log(findService);
+      // console.log(findService);
       res.status(200).json(findService);
     } catch (error) {
       res.status(500).json(error);
