@@ -1,4 +1,4 @@
-const Service = require("../models/serviceModel");
+const Service = require("../models/servicemodel");
 const router = require("express").Router();
 
 router.post("/addService", async (req, res) => {
@@ -25,7 +25,7 @@ router.post("/addService", async (req, res) => {
 router.get("/service", async (req, res) => {
   try {
     const findService = await Service.find();
-    console.log(findService);
+    // console.log(findService);
     res.status(200).json(findService);
   } catch (error) {
     res.status(500).json(error);
