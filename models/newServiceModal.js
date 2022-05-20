@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const newServiceSchema = mongoose.Schema({
-    img: String,
+    image: String,
     carType: String,
     carName: String,
     people: Number,

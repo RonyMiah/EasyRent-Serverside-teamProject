@@ -37,6 +37,7 @@ const chatRoute = require("./router/chatRoute");
 const newOrderRoute = require("./router/createOrder");
 const userOrders = require("./router/getUserOrders");
 const allOrders = require("./router/getAllOrders");
+const blogRoute = require("./router/blogRoute");
 
 // use routes
 app.use("/", PaymentRoute);
@@ -47,6 +48,7 @@ app.use("/api", singleCar);
 app.use("/api", userDetail);
 app.use("/api", newServiceRouter);
 app.use("/api", rentedRoute);
+app.use("/api", blogRoute);
 app.use("/api", addReviewRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRoute);
@@ -58,7 +60,6 @@ app.use("/api", findcars);
 app.use("/api", newOrderRoute);
 app.use("/api", userOrders);
 app.use("/api", allOrders);
-console.log(newOrderRoute);
 app.use("/api/find", findCarReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);

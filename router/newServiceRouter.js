@@ -7,7 +7,7 @@ const newService = new mongoose.model("newService", newServiceScrema)
 // Post method
 router.post("/newService", async (req, res) => {
     const input = new newService({
-        img: req.body.img,
+        image: req.body.image,
         carType: req.body.carType,
         carName: req.body.carName,
         people: req.body.people,
