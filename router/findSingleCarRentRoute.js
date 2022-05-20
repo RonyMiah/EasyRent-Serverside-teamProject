@@ -34,4 +34,15 @@ router.get("/singleCarRent", async (req, res) => {
   }
 });
 
+router.get("/singleCarRentemail/:email", async (req, res) => {
+  const email = req.params.email;
+  try {
+    const singleRentCar = await findSingleCarRent.find({ email: email });
+    res.status(200).json(singleRentCar);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+
 module.exports = router;
