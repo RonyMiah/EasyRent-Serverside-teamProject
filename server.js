@@ -26,6 +26,7 @@ const authRouter = require("./router/authRoute");
 const userRoute = require("./router/userRouter");
 const courseRoute = require("./router/courseRoute");
 const carRoute = require("./router/carRoute");
+const newServiceRouter = require("./router/newServiceRouter");
 const rentedRoute = require("./router/rentedcarRoute");
 const findBasisBrandRoute = require("./router/findBasisBrandRoute");
 const findDataBrandRoute = require("./router/findDataBrandRoute");
@@ -39,6 +40,7 @@ const chatRoute = require("./router/chatRoute");
 const newOrderRoute = require("./router/createOrder");
 const userOrders = require("./router/getUserOrders");
 const allOrders = require("./router/getAllOrders");
+const blogRoute = require("./router/blogRoute");
 const driverRoute = require("./router/driverRoute");
 
 
@@ -49,7 +51,9 @@ app.use("/api", serviceRoute);
 app.use("/api", searchingdRoute);
 app.use("/api", singleCar);
 app.use("/api", userDetail);
+app.use("/api", newServiceRouter);
 app.use("/api", rentedRoute);
+app.use("/api", blogRoute);
 app.use("/api", addReviewRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRoute);
