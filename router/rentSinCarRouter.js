@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 //sslcommerz init
 router.post("/init", async (req, res) => {
-  console.log("hitting", req.body);
+  // console.log("hitting", req.body);
   const data = new rentSinCarModal({
     total_amount: req.body?.rent,
     currency: "USD",
