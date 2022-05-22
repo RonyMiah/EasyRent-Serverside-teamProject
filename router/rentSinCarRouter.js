@@ -65,7 +65,7 @@ router.post("/success", async (req, res) => {
   res
     .status(200)
     .redirect(
-      `http://localhost:3000/rent/${req.body.tran_id}`
+      `https://easyrent-85ae2.web.app/rent/${req.body.tran_id}`
     );
 });
 router.post("/fail", async (req, res) => {
@@ -73,14 +73,14 @@ router.post("/fail", async (req, res) => {
   // res.status(400).json(req.body);
   res
     .status(200)
-    .redirect("http://localhost:3000/paymentcancel");
+    .redirect("https://easyrent-85ae2.web.app/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 router.post("/cancel", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
   res
     .status(200)
-    .redirect("http://localhost:3000/paymentcancel");
+    .redirect("https://easyrent-85ae2.web.app/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 
