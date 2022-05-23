@@ -105,4 +105,17 @@ router.get("/rentAllCars", async (req, res) => {
   }
 });
 
+router.get("/rentSingleOrder/:email", async (req, res) => {
+  try {
+    // console.log(req.params.email);
+    // product_category: "Brand",
+    const all = await rentSinCarModal.find({
+      cus_email: req.params.email,
+    });
+    res.status(200).json(all);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
