@@ -21,6 +21,10 @@ const searchedCar = new mongoose.Schema({
         type: Number,
         require: true,
     },
+    product_catogary: {
+        type: String,
+        require: true,
+    },
     pickup: {
         type: String,
         require: true,
