@@ -9,6 +9,7 @@ router.post("/addCourse", async (req, res) => {
     trainer: req.body.trainer,
     description: req.body.description,
     bannerImg: req.body.bannerImg,
+    price: req.body.price,
   });
 
   try {

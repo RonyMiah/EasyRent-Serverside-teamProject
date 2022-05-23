@@ -18,7 +18,7 @@ router.post("/init", async (req, res) => {
     paymentStatus: "pending",
     product_name: req.body?.carName,
     product_imgUrl: req.body?.imgUrl,
-    product_category: "Brand",
+    product_category: req.body.product_category || "Brand",
     product_profile: "Car",
     cus_name: req.body?.name,
     cus_email: req.body?.email,
@@ -37,6 +37,7 @@ router.post("/init", async (req, res) => {
     date_start: req.body?.startDate,
     date_end: req.body?.endDate,
   });
+  // console.log("ssl", data);
   const user = await data.save();
   const sslcommer = new SSLCommerzPayment(
     process.env.STORE_ID1,
@@ -109,12 +110,25 @@ router.get("/rentAllCars", async (req, res) => {
 
 router.get("/rentSingleOrder/:email", async (req, res) => {
   try {
-    // console.log(req.params.email);
     const all = await rentSinCarModal.find({
       product_category: "Brand",
       cus_email: req.params.email,
     });
     res.status(200).json(all);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/coursePayed/:email", async (req, res) => {
+  try {
+    // console.log(req.params.email);
+    const course = await rentSinCarModal.find({
+      product_category: "Course",
+      paymentStatus: "Successful",
+      cus_email: req.params.email,
+    });
+    res.status(200).json(course);
   } catch (error) {
     res.status(500).json(error);
   }
