@@ -64,23 +64,17 @@ router.post("/success", async (req, res) => {
 
   res
     .status(200)
-    .redirect(
-      `https://easyrent-85ae2.web.app/rent/${req.body.tran_id}`
-    );
+    .redirect(`https://easyrent-85ae2.web.app/rent/${req.body.tran_id}`);
 });
 router.post("/fail", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
   // res.status(400).json(req.body);
-  res
-    .status(200)
-    .redirect("https://easyrent-85ae2.web.app/paymentcancel");
+  res.status(200).redirect("https://easyrent-85ae2.web.app/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 router.post("/cancel", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
-  res
-    .status(200)
-    .redirect("https://easyrent-85ae2.web.app/paymentcancel");
+  res.status(200).redirect("https://easyrent-85ae2.web.app/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 
@@ -107,6 +101,19 @@ router.post("/confirm", async (req, res) => {
 router.get("/rentAllCars", async (req, res) => {
   try {
     const all = await rentSinCarModal.find();
+    res.status(200).json(all);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/rentSingleOrder/:email", async (req, res) => {
+  try {
+    // console.log(req.params.email);
+    const all = await rentSinCarModal.find({
+      product_category: "Brand",
+      cus_email: req.params.email,
+    });
     res.status(200).json(all);
   } catch (error) {
     res.status(500).json(error);
