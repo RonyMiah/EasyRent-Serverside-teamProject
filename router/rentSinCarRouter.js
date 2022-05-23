@@ -116,6 +116,21 @@ router.get("/rentSingleOrder/:email", async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-});
+  router.delete('/rentCarsdelete/:id', (req, res) => {
 
-module.exports = router;
+    rentSinCarModal.deleteOne({ _id: req.params.id }, (err) => {
+      if (err) {
+        res.status(500).send({
+          error: 'There was a server side error'
+        })
+      } else {
+        res.status(200).json({
+          message: "Order is deleted successfully"
+        })
+      }
+    }).clone()
+
+
+  });
+
+  module.exports = router;
