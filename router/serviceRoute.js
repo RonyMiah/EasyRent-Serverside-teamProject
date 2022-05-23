@@ -16,7 +16,10 @@ router.post("/addService", async (req, res) => {
 
   try {
     const service = await serviceCar.save();
-    res.status(201).json(service);
+    res.status(201).json({
+      obj:service,
+      message: "Product added successfull"
+    });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -25,7 +28,6 @@ router.post("/addService", async (req, res) => {
 router.get("/service", async (req, res) => {
   try {
     const findService = await Service.find();
-    console.log(findService);
     res.status(200).json(findService);
   } catch (error) {
     res.status(500).json(error);
@@ -40,6 +42,23 @@ router.get("/service", async (req, res) => {
     const service = await Service.findOne({_id: id});
     res.status(200).json(service);
   })
+
+  router.delete('/deleteservices/:id' ,(req, res) => {
+    Service.deleteOne({ _id: req.params.id}, (err) => {
+        if(err){
+            res.status(500).send({
+                error: 'There was a server side error'
+            })
+        } else {
+            res.status(200).json({
+                message: "Product deleted successfully"
+            })
+        }
+    }).clone()
+    
+  
+  });
+
 
 
 module.exports = router;
