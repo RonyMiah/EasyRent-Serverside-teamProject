@@ -34,7 +34,6 @@ router.get("/singleCarRent", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 router.get("/singleCarRentemail/:email", async (req, res) => {
   const email = req.params.email;
   try {
@@ -45,22 +44,20 @@ router.get("/singleCarRentemail/:email", async (req, res) => {
   }
 });
 
-=======
-router.delete('/deletesingleCarRent/:id' , async(req, res) => {
-  await findSingleCarRent.deleteOne({ _id: req.params.id}, (err) => {
-      if(err){
-          res.status(500).send({
-              error: 'There was a server side error'
-          })
-      } else {
-          res.status(200).json({
-              message: "Order is deleted successfully"
-          })
-      }
+router.delete('/deletesingleCarRent/:id', async (req, res) => {
+  await findSingleCarRent.deleteOne({ _id: req.params.id }, (err) => {
+    if (err) {
+      res.status(500).send({
+        error: 'There was a server side error'
+      })
+    } else {
+      res.status(200).json({
+        message: "Order is deleted successfully"
+      })
+    }
   }).clone()
-  
+
 
 });
->>>>>>> 5216e5ee11ac658772f2af817c41d257fb2ce192
 
 module.exports = router;
