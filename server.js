@@ -15,7 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 // routes
 
 const serviceRoute = require("./router/serviceRoute");
-// const PaymentRoute = require("./router/PaymentRouter");
 const mainService = require("./router/mainServiceRoute");
 const findcars = require("./router/searchedCarRoute");
 const searchingdRoute = require("./router/searchedCarRoute");
@@ -24,8 +23,8 @@ const userDetail = require("./router/userDetailsRoute");
 const addReviewRoute = require("./router/addReviewRouter");
 const authRouter = require("./router/authRoute");
 const userRoute = require("./router/userRouter");
-const courseRoute = require("./router/courseRoute");
 const carRoute = require("./router/carRoute");
+const newServiceRouter = require("./router/newServiceRouter");
 const rentedRoute = require("./router/rentedcarRoute");
 const findBasisBrandRoute = require("./router/findBasisBrandRoute");
 const findDataBrandRoute = require("./router/findDataBrandRoute");
@@ -34,25 +33,27 @@ const findSingleCarRentRoute = require("./router/findSingleCarRentRoute");
 const sliderSingleBrandCarRoute = require("./router/sliderSingleBrandCarRoute");
 const rentSinCarRouter = require("./router/rentSinCarRouter");
 const allCourseRouter = require("./router/allCourseRouter");
+const singleCourse = require("./router/singleCourseRoute");
 const chatRoute = require("./router/chatRoute");
 const newOrderRoute = require("./router/createOrder");
 const userOrders = require("./router/getUserOrders");
 const allOrders = require("./router/getAllOrders");
+const blogRoute = require("./router/blogRoute");
 const driverRoute = require("./router/driverRoute");
 
 
 // use routes
-// app.use("/", PaymentRoute);
 app.use("/api", mainService);
 app.use("/api", serviceRoute);
 app.use("/api", searchingdRoute);
 app.use("/api", singleCar);
 app.use("/api", userDetail);
+app.use("/api", newServiceRouter);
 app.use("/api", rentedRoute);
+app.use("/api", blogRoute);
 app.use("/api", addReviewRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRoute);
-app.use("/api/course", courseRoute);
 app.use("/api/find", carRoute);
 app.use("/api/find", findBasisBrandRoute);
 app.use("/api/find", findDataBrandRoute);
@@ -60,12 +61,12 @@ app.use("/api", findcars);
 app.use("/api", newOrderRoute);
 app.use("/api", userOrders);
 app.use("/api", allOrders);
-// console.log(newOrderRoute);
 app.use("/api/find", findCarReviewRoute);
 app.use("/api/find", findSingleCarRentRoute);
 app.use("/api/find", sliderSingleBrandCarRoute);
 app.use("/api/find", rentSinCarRouter);
 app.use("/api/find", allCourseRouter);
+app.use("/api/find", singleCourse);
 app.use("/auth", chatRoute);
 app.use("/api", driverRoute);
 
