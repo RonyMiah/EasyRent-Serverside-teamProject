@@ -41,7 +41,6 @@ router.get("/findAll", async (req, res) => {
 });
 
 router.delete('/deleteUser/:id' , async(req, res) => {
-  console.log(req.params.id)
   await User.deleteOne({ _id: req.params.id}, (err) => {
       if(err){
           res.status(500).send({

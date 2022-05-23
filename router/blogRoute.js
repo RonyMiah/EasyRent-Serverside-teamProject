@@ -6,7 +6,12 @@ const blogs = new mongoose.model("blogs", blogScrema)
 
 // Post method
 router.post("/blog", async (req, res) => {
+    const pic = req.files.picture;
+    const picData = pic.data;
+    const endodedPic = picData.toString('base64');
+    const imgBuffer = Buffer.from(endodedPic, 'base64')
     const input = new blogs({
+        picture: imgBuffer,
         image: req.body.image,
         title: req.body.title,
         details: req.body.details,
