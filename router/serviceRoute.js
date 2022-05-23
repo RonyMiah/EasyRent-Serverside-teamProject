@@ -2,7 +2,12 @@ const Service = require("../models/serviceModel");
 const router = require("express").Router();
 
 router.post("/addService", async (req, res) => {
+    const pic = req.files.picture;
+    const picData = pic.data;
+    const endodedPic = picData.toString('base64');
+    const imgBuffer = Buffer.from(endodedPic, 'base64')
   const serviceCar = new Service({
+    picture: imgBuffer,
     image: req.body.image,
     year: req.body.year,
     name: req.body.name,
