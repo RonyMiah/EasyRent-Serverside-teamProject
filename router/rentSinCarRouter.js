@@ -110,8 +110,9 @@ router.get("/rentAllCars", async (req, res) => {
 
 router.get("/rentSingleOrder/:email", async (req, res) => {
   try {
+    // console.log(req.params.email);
+    // product_category: "Brand",
     const all = await rentSinCarModal.find({
-      product_category: "Brand",
       cus_email: req.params.email,
     });
     res.status(200).json(all);
@@ -132,6 +133,21 @@ router.get("/coursePayed/:email", async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
+
+});
+router.delete('/rentCarsdelete/:id', (req, res) => {
+
+  rentSinCarModal.deleteOne({ _id: req.params.id }, (err) => {
+    if (err) {
+      res.status(500).send({
+        error: 'There was a server side error'
+      })
+    } else {
+      res.status(200).json({
+        message: "Order is deleted successfully"
+      })
+    }
+  }).clone()
 });
 
 module.exports = router;

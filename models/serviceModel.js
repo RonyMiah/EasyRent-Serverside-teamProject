@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 
 const serviceModel = new mongoose.Schema(
   {
+    picture: {
+      type: Object,
+    },
     image: {
       type: String,
-      require: true,
     },
     year: {
       type: Number,

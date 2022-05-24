@@ -2,17 +2,17 @@ const express = require("express");
 module.export = app = express();
 const port = process.env.PORT || 5000;
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 require("dotenv").config();
 const ConnectDB = require("./config/ConnectDB");
 
 //middleware
 app.use(cors());
 app.use(express.json());
+app.use(fileUpload());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-
-// const PaymentRoute = require("./router/PaymentRouter");
 const mainService = require("./router/mainServiceRoute");
 const findcars = require("./router/searchedCarRoute");
 const searchingdRoute = require("./router/searchedCarRoute");
@@ -39,7 +39,6 @@ const allOrders = require("./router/getAllOrders");
 const serviceRoute = require("./router/serviceroute");
 const blogRoute = require("./router/blogRoute");
 const driverRoute = require("./router/driverRoute");
-
 
 // use routes
 app.use("/api", mainService);
